@@ -111,6 +111,24 @@ const navigate = useNavigate();
               required
             />
           </div>
+                    <button
+            type="submit"
+            className="w-full bg-green-700 text-white py-2 px-4 rounded-md text-sm font-semibold hover:bg-green-800 transition duration-300 shadow"
+          >
+            Register
+          </button>
+        </form>
 
-  )
+        <p className="text-sm text-center text-gray-500">
+          Already have an account?{' '}
+          <a href="/login" className="text-green-700 font-medium hover:underline">
+            Log in here
+          </a>
+        </p>
+      </div>
+    </div>
+  );
 }
+
+
+
