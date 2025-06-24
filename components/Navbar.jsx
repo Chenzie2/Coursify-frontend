@@ -120,4 +120,9 @@ function Navbar({ isLoggedIn, onLogin, onLogout }) {
 }
 
 
+export default Navbar;
+
+
+
+
     
