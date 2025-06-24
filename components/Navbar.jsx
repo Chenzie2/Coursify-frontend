@@ -71,7 +71,53 @@ function Navbar({ isLoggedIn, onLogin, onLogout }) {
           </button>
         </div>
       </div>
-
-    )
-
+            {isOpen && (
+        <div className="md:hidden px-4 pb-4 space-y-2">
+          {navLinks.map((link) => (
+            <Link
+              key={link.name}
+              to={link.path}
+              className={getLinkClass(link.path)}
+              onClick={() => setIsOpen(false)}
+            >
+              <link.icon className="w-4 h-4" />
+              {link.name}
+            </Link>
+          ))}
+          {isLoggedIn ? (
+            <button
+              onClick={() => {
+                onLogout();
+                setIsOpen(false);
+              }}
+              className="w-full flex items-center justify-center gap-2 bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-md text-sm shadow"
+            >
+              <LogOut className="w-4 h-4" />
+              Logout
+            </button>
+          ) : (
+            <div className="space-y-2">
+              <Link
+                to="/login"
+                onClick={() => setIsOpen(false)}
+                className="block w-full border border-green-700 text-green-800 px-4 py-2 text-sm rounded-md hover:bg-green-50"
+              >
+                Login
+              </Link>
+              <Link
+                to="/register"
+                onClick={() => setIsOpen(false)}
+                className="block w-full bg-green-700 hover:bg-green-800 text-white px-4 py-2 text-sm rounded-md shadow"
+              >
+                Join for Free
+              </Link>
+            </div>
+          )}
+        </div>
+      )}
+    </nav>
+  );
 }
+
+
+    
