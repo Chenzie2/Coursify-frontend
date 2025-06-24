@@ -14,6 +14,10 @@ const navigate = useNavigate();
 
   const [error, setError] = useState('');
 
+    const handleChange = (e) => {
+    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
   return (
     <div>Register</div>
   )
