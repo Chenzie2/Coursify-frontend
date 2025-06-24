@@ -69,6 +69,25 @@ export default function Login() {
             />
           </div>
 
+                    <button
+            type="submit"
+            className="w-full bg-green-700 text-white py-2 px-4 rounded-md text-sm font-semibold hover:bg-green-800 transition duration-300 shadow"
+          >
+            Log In
+          </button>
+        </form>
+
+        <p className="text-sm text-center text-gray-500">
+          Don’t have an account?{' '}
+          <a href="/register" className="text-green-700 font-medium hover:underline">
+            Register here
+          </a>
+        </p>
+      </div>
+    </div>
+  );
+}
+
+
         
 
-}
