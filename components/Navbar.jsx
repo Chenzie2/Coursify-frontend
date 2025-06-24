@@ -23,7 +23,7 @@ function Navbar({ isLoggedIn, onLogin, onLogout }) {
     }`;
 
     return (
-            <nav className="bg-white border-b border-gray-200 shadow-sm">
+        <nav className="bg-white border-b border-gray-200 shadow-sm">
       <div className="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
         {/* Logo */}
         <Link to="/" className="text-green-800 text-2xl font-extrabold flex items-center gap-2">
@@ -64,6 +64,13 @@ function Navbar({ isLoggedIn, onLogin, onLogout }) {
             </div>
           )}
         </div>
+         {/* Mobile Button */}
+        <div className="md:hidden">
+          <button onClick={() => setIsOpen(!isOpen)}>
+            {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
+        </div>
+      </div>
 
     )
 
