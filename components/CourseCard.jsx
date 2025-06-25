@@ -1,39 +1,37 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-const CourseCard = ({ title, instructor, level, duration, image }) => {
+const CourseCard = ({ course }) => {
   return (
-    <div className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow border border-gray-100 h-full flex flex-col">
-      {/* Image Placeholder */}
-      <div className="h-48 bg-blue-100 overflow-hidden">
-        {image ? (
-          <img 
-            src={image} 
-            alt={title}
-            className="w-full h-full object-cover"
-          />
-        ) : (
-          <div className="w-full h-full bg-gradient-to-br from-blue-200 to-blue-300 flex items-center justify-center">
-            <span className="text-blue-600 font-medium">Course Image</span>
-          </div>
-        )}
+    <div className="group rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow flex flex-col h-full">
+      {/* Image */}
+      <div className="h-48 bg-gray-100 overflow-hidden">
+        <img 
+          src={course.image} 
+          alt={course.title}
+          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+        />
       </div>
       
-      {/* Course Info */}
-      <div className="p-6 flex-grow flex flex-col">
-        <div className="flex justify-between items-start mb-2">
-          <h3 className="text-lg font-bold text-gray-800">{title}</h3>
-          <span className="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">
-            {level}
+      {/* Content */}
+      <div className="p-4 flex-grow flex flex-col">
+        <div className="flex justify-between items-start mb-3">
+          <h3 className="font-medium text-lg text-gray-900 line-clamp-2">
+            {course.title}
+          </h3>
+          <span className="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded whitespace-nowrap">
+            {course.level}
           </span>
         </div>
         
-        <p className="text-gray-600 mb-4">By: {instructor}</p>
-        
-        <div className="mt-auto flex justify-between items-center">
-          <span className="text-sm text-gray-500">{duration} hours</span>
-          <button className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">
-            Learn More
-          </button>
+        {/* View Details Button */}
+        <div className="mt-auto">
+          <Link
+            to={`/courses/${course.id}`}
+            className="block w-full text-center text-blue-600 hover:text-blue-800 font-medium text-sm py-2 border-t border-gray-100 hover:bg-blue-50 transition-colors"
+          >
+            View Details →
+          </Link>
         </div>
       </div>
     </div>
