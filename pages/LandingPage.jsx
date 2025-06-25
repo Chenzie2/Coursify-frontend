@@ -1,3 +1,19 @@
+
+import React from 'react'
+
+function LandingPage() {
+  return (
+    <div>
+      
+    </div>
+  )
+}
+
+export default LandingPage
+
+
+
+
 import React, { useState, useEffect } from 'react';
 import CourseCard from '../components/CourseCard';
 
@@ -163,3 +179,4 @@ return (
 };
 
 export default LandingPage;
+
