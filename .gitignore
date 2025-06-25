@@ -3,6 +3,8 @@ __pycache__/
 *.py[codz]
 *$py.class
 
+node_modules/
+
 # C extensions
 *.so
 
@@ -204,4 +206,4 @@ cython_debug/
 # Marimo
 marimo/_static/
 marimo/_lsp/
-__marimo__/
+__marimo__/node_modules/
