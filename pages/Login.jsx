@@ -70,3 +70,12 @@ export default function Login() {
             Log In
           </button>
         </form>
+
+        {error && <p className="text-red-500 text-sm">{error}</p>}
+
+        <p className="text-sm text-center text-gray-500">
+          Don’t have an account?{' '}
+          <a href="/register" className="text-green-700 font-medium hover:underline">
+            Register here
+          </a>
+        </p>
