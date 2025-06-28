@@ -13,3 +13,8 @@ export default function Register() {
   });
 
   const [error, setError] = useState('');
+
+    const handleChange = (e) => {
+    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
