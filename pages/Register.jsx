@@ -79,5 +79,21 @@ export default function Register() {
     <label htmlFor="age">Age</label>
     <input ... />
   </div>
+    <div>
+    <label htmlFor="gender">Gender</label>
+    <select ... >
+      <option value="">Select Gender</option>
+      ...
+    </select>
+  </div>
+
+  <div>
+    <label htmlFor="role">Role</label>
+    <select ... >
+      <option value="">Select Role</option>
+      ...
+    </select>
+  </div>
+
 
 
