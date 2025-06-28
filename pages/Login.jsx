@@ -79,3 +79,7 @@ export default function Login() {
             Register here
           </a>
         </p>
+        </div>
+        </div>
+  );
+}
