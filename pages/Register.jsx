@@ -51,3 +51,15 @@ export default function Register() {
     }
   };
 
+
+    return (
+    <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4">
+      <div className="max-w-md w-full bg-white shadow-xl rounded-lg p-8 space-y-6">
+        <div className="text-center">
+          <UserPlus className="mx-auto h-10 w-10 text-green-600" />
+          <h2 className="mt-4 text-2xl font-bold text-green-800">Create an Account</h2>
+          <p className="mt-1 text-sm text-gray-500">Join Coursify to start learning today</p>
+        </div>
+
+        {error && <p className="text-red-500 text-sm">{error}</p>}
+
