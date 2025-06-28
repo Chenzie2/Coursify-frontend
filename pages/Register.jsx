@@ -95,5 +95,23 @@ export default function Register() {
     </select>
   </div>
 
+    <div>
+    <label htmlFor="email">Email</label>
+    <input ... />
+  </div>
+
+  <div>
+    <label htmlFor="password">Password</label>
+    <input ... />
+  </div>
+
+  <div>
+    <label htmlFor="confirmPassword">Confirm Password</label>
+    <input ... />
+  </div>
+
+  
+
+
 
 
