@@ -110,6 +110,22 @@ export default function Register() {
     <input ... />
   </div>
 
+    <button
+    type="submit"
+    className="w-full bg-green-700 text-white ..."
+  >
+    Register
+  </button>
+</form>
+
+<p className="text-sm text-center text-gray-500">
+  Already have an account?{' '}
+  <a href="/login" className="text-green-700 font-medium hover:underline">
+    Log in here
+  </a>
+</p>
+
+
   
 
 
