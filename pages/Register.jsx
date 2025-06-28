@@ -63,3 +63,21 @@ export default function Register() {
 
         {error && <p className="text-red-500 text-sm">{error}</p>}
 
+        <form onSubmit={handleSubmit} className="space-y-4 text-gray-800">
+  <div className="flex gap-2">
+    <div className="w-1/2">
+      <label htmlFor="first_name">First Name</label>
+      <input ... />
+    </div>
+    <div className="w-1/2">
+      <label htmlFor="last_name">Last Name</label>
+      <input ... />
+    </div>
+  </div>
+
+  <div>
+    <label htmlFor="age">Age</label>
+    <input ... />
+  </div>
+
+
