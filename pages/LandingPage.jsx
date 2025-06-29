@@ -1,6 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
-
+import { Link } from 'react-router-dom';
 
 const LandingPage = () => {
   const categories = [
@@ -126,16 +125,6 @@ const LandingPage = () => {
                 <span className="bg-green-100 text-green-800 text-xs px-2 py-1 rounded self-start">Advanced</span>
               </div>
             </div>
-          </div>
-
-          {/* Button */}
-          <div className="mt-12 text-center">
-            <Link
-              to="/courses"
-              className="inline-block bg-white text-green-700 font-semibold px-6 py-3 rounded-lg hover:bg-green-100 hover:text-green-800 hover:shadow transition"
-            >
-              Go to All Courses
-            </Link>
           </div>
         </div>
       </section>
