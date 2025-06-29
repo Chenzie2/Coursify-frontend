@@ -7,6 +7,7 @@ import LandingPage from '../pages/LandingPage';
 import Login from '../pages/Login';
 import Register from '../pages/Register';
 import CourseDetails from '../pages/CourseDetails';
+import MyCourses from '../pages/MyCourses';
 
 function App() {
   const location = useLocation();
@@ -21,7 +22,8 @@ function App() {
           <Route path="/" element={<LandingPage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/courses/:id" element={<CourseDetails />} />
+           <Route path="/mycourses" element={<MyCourses />} />
+          <Route path="/courses/:id" element={<CourseDetails />} />         
           <Route path="/about" element={<About />} />
         </Routes>
       </div>
