@@ -9,7 +9,7 @@ export default function MyCourses() {
   useEffect(() => {
     const fetchCourses = async () => {
       try {
-        // First, check who's logged in
+        // First, check who's logged in//
         const sessionRes = await fetch('http://127.0.0.1:5000/check_session', {
           credentials: 'include',
         });
