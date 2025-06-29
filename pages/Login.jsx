@@ -34,7 +34,7 @@ export default function Login() {
         localStorage.setItem('token', data.token);
         localStorage.setItem('user', JSON.stringify(data.user));
 
-        navigate('/mycourses');
+        navigate('/dashboard');
       } else {
         setError(data.error || 'Login failed.');
       }
