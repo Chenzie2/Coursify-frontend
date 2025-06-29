@@ -1,38 +1,88 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import Footer from '../components/Footer';
+
 
 export default function CourseDetails() {
-  const { id } = useParams();
+  const { courseId } = useParams()
+  //const { id } = useParams();
   const [course, setCourse] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [isEnrolled, setIsEnrolled] = useState(false);
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
-  console.log(`Fetching from http://localhost:5000/courses/${id}`);
-  fetch(`http://localhost:5000/courses/${id}`)
-    .then((res) => {
-      if (!res.ok) {
-        throw new Error('Failed to fetch course');
+    const userData = localStorage.getItem('user');
+    if (userData) {
+      setUser(JSON.parse(userData));
+    }
+
+    fetch(`http://localhost:5555/courses/${courseId}`)
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error('Failed to fetch course');
+        }
+        return res.json();
+      })
+      .then((data) => {
+        setCourse(data);
+        setLoading(false);
+        
+        if (userData) {
+          checkEnrollment(data.id, JSON.parse(userData).id);
+        }
+      })
+      .catch((err) => {
+        console.error(err);
+        setError(err.message);
+        setLoading(false);
+      });
+  }, [courseId]);
+
+  const checkEnrollment = async (courseId, userId) => {
+    try {
+      const response = await fetch(`http://localhost:5555/enrollments/check?user_id=${userId}&course_id=${courseId}`);
+      const data = await response.json();
+      setIsEnrolled(data.isEnrolled);
+    } catch (err) {
+      console.error('Error checking enrollment:', err);
+    }
+  };
+
+  const handleEnroll = async () => {
+    if (!user) {
+      toast.error('Please log in to enroll in courses');
+      return;
+    }
+
+    try {
+      const response = await fetch('http://localhost:5555/enrollments', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${localStorage.getItem('token')}`
+        },
+        body: JSON.stringify({
+          user_id: user.id,
+          course_id: course.id,
+          progress: 0,
+          review_score: null,
+          certificate_issued: false
+        })
+      });
+
+      if (response.ok) {
+        toast.success('Successfully enrolled in the course!');
+        setIsEnrolled(true);
+      } else {
+        const errorData = await response.json();
+        toast.error(errorData.error || 'Enrollment failed');
       }
-      return res.json();
-    })
-    .then((data) => {
-      console.log("Data received:", data);
-      setCourse(data);
-      setLoading(false);
-    })
-    .catch((err) => {
-      console.error(err);
-      setError(err.message);
-      setLoading(false);
-    });
-}, [id]);
-
-
-  const handleEnroll = () => {
-    toast.success('Enrollment successful!');
+    } catch (err) {
+      console.error('Enrollment error:', err);
+      toast.error('Failed to enroll. Please try again.');
+    }
   };
 
   if (loading) return <p className="text-gray-600 font-semibold">Loading...</p>;
@@ -40,10 +90,10 @@ export default function CourseDetails() {
 
   return (
     <div className="py-10 flex items-center justify-center px-4 bg-white">
-      <div className="max-w-3xl mx-auto px-6 py-10 bg-white border rounded-2xl text-center font-sans text-slate-800 shadow-xl">
+      <div className="max-w-3xl mx-auto w-200 px-6 py-10 bg-white rounded-2xl text-center font-sans text-slate-800 shadow-xl">
 
         <div className='mb-6'>
-          <h1 className="text-4xl font-extrabold text-black mb-1">{course.title}</h1>
+          <h1 className="text-4xl font-extrabold text-gray-700 mb-1">{course.title}</h1>
           <p>{course.description}</p>
         </div>
 
@@ -63,11 +113,18 @@ export default function CourseDetails() {
           </div>
         </div>
 
-        <button
-          onClick={handleEnroll}
-          className="bg-white text-green-600 border border-green-600 hover:bg-green-600 hover:text-white font-semibold px-6 py-3 rounded-lg transition duration-300 mb-8 animate-pulse">
-          Enroll
-        </button>
+        {isEnrolled ? (
+          <div className="bg-green-100 text-green-800 font-semibold px-6 py-3 rounded-lg mb-8">
+            You are already enrolled in this course
+          </div>
+        ) : (
+          <button
+            onClick={handleEnroll}
+            className="bg-white text-green-600 border border-green-600 hover:bg-green-600 hover:text-white font-semibold px-6 py-3 rounded-lg transition duration-300 mb-8 animate-pulse"
+          >
+            Enroll
+          </button>
+        )}
 
         <div className='bg-white border border-green-600 rounded-lg p-4'>
           <h3 className="text-xl text-green-500 font-semibold mb-3">Reviews</h3>
@@ -90,8 +147,6 @@ export default function CourseDetails() {
           )}
         </div>
       </div>
-
     </div>
   );
 }
-
