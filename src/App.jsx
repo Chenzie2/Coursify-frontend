@@ -1,34 +1,56 @@
-import React, { useState } from 'react';
-import { Routes, Route, BrowserRouter } from 'react-router-dom';
-import Navbar from '../components/Navbar';
-
-import About from '../pages/About'; 
-import LandingPage from '../pages/LandingPage';
-import Login from '../pages/Login';
-import Register from '../pages/Register';
-import MyCourses from '../pages/MyCourses';
-import CourseDetails from '../pages/CourseDetails';
+import React from "react";
+import { Routes, Route, useLocation, useNavigate } from "react-router-dom";
+import NavbarLoggedOut from "../components/NavbarLoggedOut";
+import NavbarLoggedIn from "../components/NavbarLoggedIn";
+import Footer from "../components/Footer";
+import About from "../pages/About";
+import LandingPage from "../pages/LandingPage";
+import Login from "../pages/Login";
+import Register from "../pages/Register";
+import CourseDetails from "../pages/CourseDetails";
+import MyCourses from "../pages/MyCourses";
+import Dashboard from "../pages/Dashboard";
 
 function App() {
-  
+  const location = useLocation();
+  const navigate = useNavigate();
+  const hideLayout = ["/login", "/register"].includes(location.pathname);
+
+  const user = JSON.parse(localStorage.getItem("user"));
+  const token = localStorage.getItem("token");
+
+  const handleLogout = () => {
+    localStorage.removeItem("user");
+    localStorage.removeItem("token");
+    navigate("/");
+  };
 
   return (
-    //  <ToastContainer position="top-right" autoClose={3000} />
-    
-    
-    <Routes>
-     
-      <Route path="/" element={<LandingPage />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/register" element={<Register />} />
-      <Route path="/mycourses" element={<MyCourses />} />
-      <Route path="/courses/:id" element={<CourseDetails />} />
-      
-      
-      <Route path="/about" element={<About />} />
-      
-    </Routes>
-   
+    <div className="flex flex-col min-h-screen">
+      {!hideLayout && (
+        <>
+          {user && token ? (
+            <NavbarLoggedIn user={user} onLogout={handleLogout} />
+          ) : (
+            <NavbarLoggedOut />
+          )}
+        </>
+      )}
+
+      <div className="flex-grow">
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/mycourses" element={<MyCourses />} />
+          <Route path="/courses/:id" element={<CourseDetails />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+        </Routes>
+      </div>
+
+      {!hideLayout && <Footer />}
+    </div>
   );
 }
 

@@ -89,6 +89,7 @@ export default function CourseDetails() {
           )}
         </div>
       </div>
+
     </div>
   );
 }
