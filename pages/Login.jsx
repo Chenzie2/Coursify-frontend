@@ -20,25 +20,23 @@ export default function Login() {
     }
 
     try {
-      const response = await fetch('http://127.0.0.1:5000/login', {
+      const response = await fetch('http://127.0.0.1:5555/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        credentials: 'include', // Important for sending cookies if needed
+        credentials: 'include',
         body: JSON.stringify(formData),
       });
 
       const data = await response.json();
 
       if (response.ok) {
-        // Save token to localStorage or context if needed
         localStorage.setItem('token', data.token);
         localStorage.setItem('user', JSON.stringify(data.user));
-
-        navigate('/dashboard');
+        navigate(`/${data.user.role}/${data.user.id}`);
       } else {
         setError(data.error || 'Login failed.');
       }
-    } catch (err) {
+    } catch {
       setError('Server error.');
     }
   };
@@ -92,7 +90,7 @@ export default function Login() {
         {error && <p className="text-red-500 text-sm">{error}</p>}
 
         <p className="text-sm text-center text-gray-500">
-          Don’t have an account?{' '}
+          Don't have an account?{' '}
           <a href="/register" className="text-green-700 font-medium hover:underline">
             Register here
           </a>

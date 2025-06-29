@@ -8,6 +8,7 @@ import {
   Home,
   User,
   Layers,
+  UserRound,
 } from "lucide-react";
 
 export default function NavbarLoggedIn({ user, onLogout }) {
@@ -27,24 +28,31 @@ export default function NavbarLoggedIn({ user, onLogout }) {
   const roleLink =
     user.role === "student"
       ? { name: "Enrolled Courses", path: "/mycourses", icon: BookOpen }
-      : { name: "My Courses", path: "/mycourses", icon: Layers };
+      : { name: "My Courses", path: `/instructor/${user?.id}/dashboard`, icon: Layers };
 
   const navLinks = [
-    { name: "Dashboard", path: "/dashboard", icon: Home },
-    roleLink,
+    user.role === "student"
+    ? { name: "Dashboard", path: `/${user?.role}/${user?.id}`, icon: Home }
+    : { name: "Profile", path: `/${user?.role}/${user?.id}`, icon: UserRound},
+    roleLink
   ];
+  
+
+  const handleNavigate = () => {
+    navigate(`/${user?.role}/${user?.id}`);
+  };
 
   return (
     <nav className="bg-white border-b border-gray-200 shadow-sm">
       <div className="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
         {/* Logo */}
-        <Link
-          to="/dashboard"
+        <button
+          onClick={handleNavigate}
           className="text-green-800 text-2xl font-extrabold flex items-center gap-2"
         >
           <User className="w-6 h-6 text-green-600" />
           Coursify
-        </Link>
+        </button>
 
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center gap-6">

@@ -10,6 +10,10 @@ import Register from "../pages/Register";
 import CourseDetails from "../pages/CourseDetails";
 import MyCourses from "../pages/MyCourses";
 import Dashboard from "../pages/Dashboard";
+import InstructorProfile from "../pages/InstructorProfile";
+import InstructorDashboard from "../pages/InstructorDashboard";
+import InstrCourseDetails from "../pages/InstrCourseDetails";
+import Home from "../pages/Home";
 
 function App() {
   const location = useLocation();
@@ -43,9 +47,14 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/mycourses" element={<MyCourses />} />
-          <Route path="/courses/:id" element={<CourseDetails />} />
+          <Route path="/student/:id/courses/:courseId" element={<CourseDetails />} />
           <Route path="/about" element={<About />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/instructor/:id" element={<InstructorProfile />} />
+          <Route path="/instructor/:id/dashboard" element={<InstructorDashboard />} />
+          <Route path="/instructor/:id/courses/:courseId" element={<InstrCourseDetails />} />
+          <Route path="/student/:id" element={<Home />} />
+
         </Routes>
       </div>
 

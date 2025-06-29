@@ -55,10 +55,10 @@ export default function Register() {
     }
 
     try {
-      const response = await fetch('http://127.0.0.1:5000/signup', {
+      const response = await fetch('http://127.0.0.1:5555/signup', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        credentials: 'include', // ✅ Added this to match CORS config
+        credentials: 'include', 
         body: JSON.stringify({
           first_name,
           last_name,
