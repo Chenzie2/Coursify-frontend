@@ -7,12 +7,11 @@ export default function Login() {
   const [formData, setFormData] = useState({ email: '', password: '' });
   const [error, setError] = useState('');
 
-
   const handleChange = (e) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-    const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!formData.email || !formData.password) {
@@ -20,9 +19,28 @@ export default function Login() {
       return;
     }
 
-    // Mock login logic (replace with real API call)
-    console.log('Logging in with:', formData);
-    navigate('/mycourses');
+    try {
+      const response = await fetch('http://127.0.0.1:5000/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'include', // Important for sending cookies if needed
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        // Save token to localStorage or context if needed
+        localStorage.setItem('token', data.token);
+        localStorage.setItem('user', JSON.stringify(data.user));
+
+        navigate('/mycourses');
+      } else {
+        setError(data.error || 'Login failed.');
+      }
+    } catch (err) {
+      setError('Server error.');
+    }
   };
 
   return (
@@ -79,7 +97,7 @@ export default function Login() {
             Register here
           </a>
         </p>
-        </div>
-        </div>
+      </div>
+    </div>
   );
 }
