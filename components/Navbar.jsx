@@ -9,8 +9,13 @@ function Navbar({ isLoggedIn, onLogout }) {
   const location = useLocation();
   const currentPath = location.pathname;
 
+  // Notice: we dynamically set the Home/Dashboard link depending on isLoggedIn
   const navLinks = [
-    { name: 'Home', path: '/', icon: Home },
+    {
+      name: isLoggedIn ? 'Dashboard' : 'Home',
+      path: isLoggedIn ? '/dashboard' : '/',
+      icon: Home,
+    },
     { name: 'Courses', path: '/mycourses', icon: BookOpen },
     { name: 'About', path: '/about', icon: Users },
   ];
@@ -26,7 +31,10 @@ function Navbar({ isLoggedIn, onLogout }) {
     <nav className="bg-white border-b border-gray-200 shadow-sm">
       <div className="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
         {/* Logo */}
-        <Link to="/" className="text-green-800 text-2xl font-extrabold flex items-center gap-2">
+        <Link
+          to={isLoggedIn ? '/dashboard' : '/'}
+          className="text-green-800 text-2xl font-extrabold flex items-center gap-2"
+        >
           <GraduationCap className="w-6 h-6 text-green-600" />
           Coursify
         </Link>
@@ -39,6 +47,24 @@ function Navbar({ isLoggedIn, onLogout }) {
               {link.name}
             </Link>
           ))}
+
+          {!isLoggedIn && (
+            <>
+              <Link
+                to="/login"
+                className="text-sm px-4 py-2 rounded-md bg-green-600 text-white hover:bg-green-700 shadow"
+              >
+                Login
+              </Link>
+              <Link
+                to="/register"
+                className="text-sm px-4 py-2 rounded-md border border-green-600 text-green-600 hover:bg-green-50"
+              >
+                Register
+              </Link>
+            </>
+          )}
+
           {isLoggedIn && (
             <button
               onClick={onLogout}
@@ -71,6 +97,26 @@ function Navbar({ isLoggedIn, onLogout }) {
               {link.name}
             </Link>
           ))}
+
+          {!isLoggedIn && (
+            <>
+              <Link
+                to="/login"
+                className="block w-full text-center text-sm px-4 py-2 rounded-md bg-green-600 text-white hover:bg-green-700 shadow"
+                onClick={() => setIsOpen(false)}
+              >
+                Login
+              </Link>
+              <Link
+                to="/register"
+                className="block w-full text-center text-sm px-4 py-2 rounded-md border border-green-600 text-green-600 hover:bg-green-50"
+                onClick={() => setIsOpen(false)}
+              >
+                Register
+              </Link>
+            </>
+          )}
+
           {isLoggedIn && (
             <button
               onClick={() => {
