@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Routes, Route, BrowserRouter } from 'react-router-dom';
+import React, { useState} from 'react';
+import { Routes, Route, useLocation} from 'react-router-dom';
 import Navbar from '../components/Navbar';
 
 import About from '../pages/About'; 
@@ -10,10 +10,15 @@ import Register from '../pages/Register';
 import CourseDetails from '../pages/CourseDetails';
 
 function App() {
+   const location = useLocation();
+  const hideNavbar = ['/login', '/register'].includes(location.pathname);
 
 
   return (
     //  <ToastContainer position="top-right" autoClose={3000} />
+
+    <>
+    {!hideNavbar && <Navbar />}
     
     
     <Routes>
@@ -23,12 +28,10 @@ function App() {
       <Route path="/register" element={<Register />} />
       {/* <Route path="/mycourses" element={<MyCourses />} /> */}
       <Route path="/courses/:id" element={<CourseDetails />} />
-      
-      
       /* <Route path="/about" element={<About />} />*/
       
     </Routes>
-   
+   </>
   );
 }
 
