@@ -10,25 +10,26 @@ export default function CourseDetails() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    console.log( Fetching from http://localhost:5000/courses/${id});
-    fetch(http://localhost:5000/courses/${id})
-      .then((res) => {
-        if (!res.ok) {
-          throw new Error('Failed to fetch course');
-        }
-        return res.json();
-      })
-      .then((data) => {
-        console.log("Data received:", data);
-        setCourse(data);
-        setLoading(false);
-      })
-      .catch((err) => {
-        console.error(err);
-        setError(err.message);
-        setLoading(false);
-      });
-  }, [id]);
+  console.log(`Fetching from http://localhost:5000/courses/${id}`);
+  fetch(`http://localhost:5000/courses/${id}`)
+    .then((res) => {
+      if (!res.ok) {
+        throw new Error('Failed to fetch course');
+      }
+      return res.json();
+    })
+    .then((data) => {
+      console.log("Data received:", data);
+      setCourse(data);
+      setLoading(false);
+    })
+    .catch((err) => {
+      console.error(err);
+      setError(err.message);
+      setLoading(false);
+    });
+}, [id]);
+
 
   const handleEnroll = () => {
     toast.success('Enrollment successful!');
@@ -94,4 +95,3 @@ export default function CourseDetails() {
   );
 }
 
-export default CourseDetails;
