@@ -10,7 +10,7 @@ export default function CourseDetails() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    console.log(🔍 Fetching from http://localhost:5000/courses/${id});
+    console.log( Fetching from http://localhost:5000/courses/${id});
     fetch(http://localhost:5000/courses/${id})
       .then((res) => {
         if (!res.ok) {
@@ -19,7 +19,7 @@ export default function CourseDetails() {
         return res.json();
       })
       .then((data) => {
-        console.log("✅ Data received:", data);
+        console.log("Data received:", data);
         setCourse(data);
         setLoading(false);
       })
