@@ -8,7 +8,7 @@ function Home() {
 
   useEffect(() => {
     if (!id) return;
-    fetch(`http://127.0.0.1:5555/courses`)
+    fetch(`https://coursify-backend-svup.onrender.com/courses`)
       .then((r) => r.json())
       .then(setCourses)
       .catch(console.error);

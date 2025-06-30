@@ -22,7 +22,7 @@ export default function Dashboard() {
     // Example: fetch user's courses from API
     const fetchCourses = async () => {
       try {
-        const response = await fetch("http://127.0.0.1:5555/mycourses", {
+        const response = await fetch("https://coursify-backend-svup.onrender.com/mycourses", {
           headers: {
             Authorization: `Bearer ${token}`,
           },
