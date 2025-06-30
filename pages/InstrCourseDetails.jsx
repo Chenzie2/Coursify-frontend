@@ -13,14 +13,14 @@ function InstrCourseDetails() {
   const [form, setForm] = useState({ title: "", description: "" });
 
   useEffect(() => {
-    fetch(`http://127.0.0.1:5555/courses/${courseId}`)
+    fetch(`https://coursify-backend-svup.onrender.com/courses/${courseId}`)
       .then((r) => r.json())
       .then((data) => {
         setCourse(data);
         setForm({ title: data.title, description: data.description });
       });
 
-    fetch(`http://127.0.0.1:5555/courses/${courseId}/students`)
+    fetch(`https://coursify-backend-svup.onrender.com/courses/${courseId}/students`)
       .then((r) => r.json())
       .then((data) => {
         if (data.students) setStudents(data.students);
@@ -34,7 +34,7 @@ function InstrCourseDetails() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    fetch(`http://127.0.0.1:5555/courses/${courseId}`, {
+    fetch(`https://coursify-backend-svup.onrender.com/courses/${courseId}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -52,7 +52,7 @@ function InstrCourseDetails() {
     const confirmDelete = window.confirm("Are you sure you want to delete this course?");
     if (!confirmDelete) return;
 
-    fetch(`http://127.0.0.1:5555/courses/${courseId}`, {
+    fetch(`https://coursify-backend-svup.onrender.com/courses/${courseId}`, {
       method: "DELETE",
     }).then((r) => {
       if (r.ok) {
