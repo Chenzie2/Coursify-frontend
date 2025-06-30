@@ -1,6 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PythonImage from "../src/assets/Python Programming.jpg"
+import MLImage from "../src/assets/MachineLearning.jpg"
+import ReactImage from "../src/assets/React.png"
+import DataImage from "../src/assets/Data Science.avif"
 
 const LandingPage = () => {
   const categories = [
@@ -86,7 +89,7 @@ const LandingPage = () => {
             <div className="rounded-xl overflow-hidden shadow-md bg-white flex flex-col">
               <div className="h-48 bg-gray-100">
                 <img
-                  src="src/assets/MachineLearning.jpg"
+                  src={MLImage}
                   alt="Machine Learning Basics"
                   className="w-full h-full object-cover"
                 />
@@ -101,7 +104,7 @@ const LandingPage = () => {
             <div className="rounded-xl overflow-hidden shadow-md bg-white flex flex-col">
               <div className="h-48 bg-gray-100">
                 <img
-                  src="src/assets/React.png"
+                  src={ReactImage}
                   alt="React for Beginners"
                   className="w-full h-full object-cover"
                 />
@@ -116,7 +119,7 @@ const LandingPage = () => {
             <div className="rounded-xl overflow-hidden shadow-md bg-white flex flex-col">
               <div className="h-48 bg-gray-100">
                 <img
-                  src="src/assets/Data Science.avif"
+                  src={DataImage}
                   alt="Data Science with Python"
                   className="w-full h-full object-cover"
                 />
