@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PythonImage from "../src/assets/Python Programming.jpg"
 
 const LandingPage = () => {
   const categories = [
@@ -70,7 +71,7 @@ const LandingPage = () => {
             <div className="rounded-xl overflow-hidden shadow-md bg-white flex flex-col">
               <div className="h-48 bg-gray-100">
                 <img
-                  src="src/assets/Python Programming.jpg"
+                  src={PythonImage}
                   alt="Python Programming"
                   className="w-full h-full object-cover"
                 />
