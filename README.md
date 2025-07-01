@@ -1,84 +1,82 @@
-#  Coursify Frontend
+# Coursify Frontend
 
-**Coursify is a role-based online course platform frontend, built with **React** and **Tailwind CSS**,<br>it  allows users to register, login, view courses, and instructors to manage learning content.<br> It connects seamlessly with a Flask backend for full-stack functionality.
+**Coursify** is a role-based online course platform frontend, built with **React** and **Tailwind CSS**.  
+It allows users to register, log in, view courses, and enables instructors to manage learning content.  
+It connects seamlessly with a Flask backend for full-stack functionality.
 
+---
 
+## 📸 Screenshots
 
-## Screenshots
+| Feature | Screenshot |
+|---------|------------|
+| Create Account | ![Create Account](./screenshots/create-account.jpg) |
+| Login Page | ![Login](./screenshots/login.jpg) |
+| Instructor Dashboard | ![Instructor Dashboard](./screenshots/instructor-dashboard.jpg) |
+| Instructor Course Details | ![Instructor Course](./screenshots/instructor-course-details.jpg) |
+| Available Courses | ![Available Courses](./screenshots/available-courses.jpg) |
+| User Profile | ![User Profile](./screenshots/user-profile.jpg) |
+| Enrolled Courses | ![Enrolled Courses](./screenshots/enrolled-courses.jpg) |
+| Enrolled Students | ![Enrolled Students](./screenshots/enrolled-students.jpg) |
+| Create New Course | ![Create New Course](./screenshots/create-new-course.jpg) |
 
-### Create Account
-![Create Account](./screenshots/create-account.jng)
+---
 
-### Login Page
-![Login ](screenshots/login.jpg)
+## 🛠 Technologies Used
 
-### Instructor Dashboard
-![Instructor Dashboard](<screenshots/instructor Dashboard.jpg>)
-### Instructor Course
-![Instructor course](<screenshots/instructor-course details.jpg>)
+- **Frontend**: React.js, Tailwind CSS
+- **Routing**: React Router DOM
+- **Forms**: Formik + Yup 
+- **Auth**: JWT Authentication 
+- **Icons**: Lucide Icons
+- **Backend**: Flask (hosted on Render)
 
-### Available Courses (All Users)
-![Available Courses](<screenshots/available courses.jpg>)
+---
 
-### User Profile
-![User Profile](<screenshots/user profile.jpg>)
+##  Key Features
 
-### Enrolled Courses (Student View)
-![Enrolled Courses](<screenshots/enrolled courses.jpg>)
+- **Role-based Access**:
+  - Instructors: Create/manage courses, view enrollments
+  - Students: Browse/enroll in courses, track progress
+- Responsive UI with Tailwind CSS
+- Form validation with Formik & Yup
+- Protected routes based on user role
+- Profile management system
 
-### Enrolled Students (Instructor View)
-![Enrolled Students](./screenshots/enrolled-students.jng)
-
-## Create Account (User Account)
-![Create Account](<screenshots/create account.jpg>)
-
-## Create New Course(user course)
-![Create New Course](<screenshots/create new course.jpg>)
-
-## Enrolled student(Enrollments)
-![Enrollments](<screenshots/enrolled student.jpg>)
-
-
-## Technologies used included 
-
-- **React.js**
-- **Tailwind CSS**
-- **React Router DOM**
-- **Formik + Yup** 
-- **JWT Auth** 
-- **Lucide Icons**
-
-
-## Key Features 
-
-- **Role-based Authentication** 
-- Instructors: Create and manage courses
-- Students: Browse, enroll, and track progress
-- Profile page with user details
-- Reviews and progress tracking 
+---
 
 ## Folder Structure
-
 Coursify-frontend/
-
-│ ├── components/ # Navbar, Forms, Cards, etc.
-│ ├── pages/About.jsx, CourseDetails.jsx,Dashboard.jsx,InstrCourseDetails.jsx ,InstructorDashboard.jsx, InstructorProfile.jsx, LandingPage.jsx, Login.jsx, MyCourses.jsx, Register.jsx
-│──src
-│ ├── App.jsx 
-│ └── main.jsx 
-| └── index.css
-| └──
-├── screenshots
+├── components/ # [CourseCard, Footer, Layout, Navbar]
+├── pages/ # [About, CourseDetails, Dashboard, Home, Instr, Instructor, LandingPage, Login, MyCourses, Register]
+├── public/ # Coursify.webp
+├── screenshots/ # [.jpg screenshots]
+├── src/ # [App.*, main.jsx, assets/, images/, index.css]
+├── .gitignore
+├── .config.js # [eslint, vite]
+├── package.json # [package, package-lock]
+├── Pipfile
 └── README.md
+---
 
-###  Clone the repo
 
+## Setup Instructions
+
+1. Clone the repository:
+```bash
 git clone https://github.com/Chenzie2/Coursify-frontend
-1. cd Coursify-frontend
-2. Install dependencies
+cd Coursify-frontend
+```
 
+2. Install dependencies:
+```bash
 npm install
-3. Start the development server
+```
 
+3. Start the development server:
+```bash
 npm run dev
-Ensure your Flask backend is running on http://127.0.0.1:5555
+```
+
+- Ensure your backend is running at https://coursify-backend-svup.onrender.com/
+
