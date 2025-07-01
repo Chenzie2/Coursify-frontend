@@ -73,18 +73,22 @@ function InstructorDashboard() {
       </h1>
 
       {/* COURSES LIST */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {courses.map((course) => (
-          <div
-            key={course.id}
-            onClick={() => handleCourseClick(course.id)}
-            className="cursor-pointer bg-white shadow-md p-6 rounded-xl border border-slate-200 hover:shadow-lg"
-          >
+      {courses.length === 0 ? (
+        <p className="text-center text-gray-600 text-lg mb-10">You have no courses yet.</p>
+      ) : (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {courses.map((course) => (
+            <div
+              key={course.id}
+              onClick={() => handleCourseClick(course.id)}
+              className="cursor-pointer bg-white shadow-md p-6 rounded-xl border border-slate-200 hover:shadow-lg"
+            >
             <h2 className="text-xl font-semibold mb-2 text-green-600">{course.title}</h2>
             <p className="text-gray-600">{course.description}</p>
-          </div>
-        ))}
-      </div>
+            </div>
+          ))}
+        </div>
+      )}
 
       {/* CREATE FORM */}
       {showForm && (
