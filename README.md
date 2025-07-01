@@ -10,15 +10,15 @@ It connects seamlessly with a Flask backend for full-stack functionality.
 
 | Feature | Screenshot |
 |---------|------------|
-| Create Account | ![Create Account](./screenshots/create-account.jpg) |
+| Create Account | ![Create Account](./screenshots/createaccount.jpg) |
 | Login Page | ![Login](./screenshots/login.jpg) |
-| Instructor Dashboard | ![Instructor Dashboard](./screenshots/instructor-dashboard.jpg) |
-| Instructor Course Details | ![Instructor Course](./screenshots/instructor-course-details.jpg) |
-| Available Courses | ![Available Courses](./screenshots/available-courses.jpg) |
-| User Profile | ![User Profile](./screenshots/user-profile.jpg) |
-| Enrolled Courses | ![Enrolled Courses](./screenshots/enrolled-courses.jpg) |
-| Enrolled Students | ![Enrolled Students](./screenshots/enrolled-students.jpg) |
-| Create New Course | ![Create New Course](./screenshots/create-new-course.jpg) |
+| Instructor Dashboard | ![Instructor Dashboard](./screenshots/instructor%20Dashboard.jpg) |
+| Instructor Course Details | ![Instructor Course](./screenshots/instructor-course%20details.jpg) |
+| Available Courses | ![Available Courses](./screenshots/available%20courses.jpg) |
+| User Profile | ![User Profile](./screenshots/user%20profile.jpg) |
+| Enrolled Courses | ![Enrolled Courses](./screenshots/enrolled%20courses.jpg) |
+| Enrolled Students | ![Enrolled Students](./screenshots/enrolled%20student.jpg) |
+| Create New Course | ![Create New Course](./screenshots/create%20new%20course.jpg) |
 
 ---
 
