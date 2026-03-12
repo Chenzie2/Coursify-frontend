@@ -14,7 +14,7 @@ export default function MyCourses() {
         const token = localStorage.getItem("token");
         if (!token) throw new Error("You must be logged in");
 
-        const sessionRes = await fetch("https://coursify-backend-svup.onrender.com/me", {
+        const sessionRes = await fetch("https://coursify-backend-2yvl.onrender.com/me", {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -28,7 +28,7 @@ export default function MyCourses() {
           throw new Error("Only students can view enrolled courses.");
         }
 
-        const enrollmentsRes = await fetch(`https://coursify-backend-svup.onrender.com/enrollments/${userId}`, {
+        const enrollmentsRes = await fetch(`https://coursify-backend-2yvl.onrender.com/enrollments/${userId}`, {
           credentials: 'include',
         });
 
@@ -37,7 +37,7 @@ export default function MyCourses() {
         
         const coursesData = await Promise.all(
           enrollmentsData.map(async (enrollment) => {
-            const courseRes = await fetch(`https://coursify-backend-svup.onrender.com/courses/${enrollment.course_id}`);
+            const courseRes = await fetch(`https://coursify-backend-2yvl.onrender.com/courses/${enrollment.course_id}`);
             if (!courseRes.ok) throw new Error(`Failed to fetch course ${enrollment.course_id}`);
             const courseData = await courseRes.json();
 

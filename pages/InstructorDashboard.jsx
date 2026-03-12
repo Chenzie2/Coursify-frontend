@@ -11,7 +11,7 @@ function InstructorDashboard() {
 
   useEffect(() => {
     if (!id) return;
-    fetch(`https://coursify-backend-svup.onrender.com/instructors/${id}/courses`)
+    fetch(`https://coursify-backend-2yvl.onrender.com/instructors/${id}/courses`)
       .then((r) => r.json())
       .then(setCourses)
       .catch(console.error);
@@ -43,7 +43,7 @@ function InstructorDashboard() {
         lesson_count: parseInt(values.lesson_count),
       };
 
-      fetch("https://coursify-backend-svup.onrender.com/courses", {
+      fetch("https://coursify-backend-2yvl.onrender.com/courses", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),

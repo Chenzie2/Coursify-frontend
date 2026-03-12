@@ -18,7 +18,7 @@ export default function CourseDetails() {
       setUser(JSON.parse(userData));
     }
 
-    fetch(`https://coursify-backend-svup.onrender.com/courses/${courseId}`)
+    fetch(`https://coursify-backend-2yvl.onrender.com/courses/${courseId}`)
       .then((res) => {
         if (!res.ok) {
           throw new Error('Failed to fetch course');
@@ -42,7 +42,7 @@ export default function CourseDetails() {
 
   const checkEnrollment = async (courseId, userId) => {
     try {
-      const response = await fetch(`https://coursify-backend-svup.onrender.com/enrollments/check?user_id=${userId}&course_id=${courseId}`);
+      const response = await fetch(`https://coursify-backend-2yvl.onrender.com/enrollments/check?user_id=${userId}&course_id=${courseId}`);
       const data = await response.json();
       setIsEnrolled(data.isEnrolled);
     } catch (err) {
@@ -57,7 +57,7 @@ export default function CourseDetails() {
     }
 
     try {
-      const response = await fetch('https://coursify-backend-svup.onrender.com/enrollments', {
+      const response = await fetch('https://coursify-backend-2yvl.onrender.com/enrollments', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

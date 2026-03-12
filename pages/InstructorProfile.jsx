@@ -16,7 +16,7 @@ function InstructorProfile() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`https://coursify-backend-svup.onrender.com/users/${id}`)
+    fetch(`https://coursify-backend-2yvl.onrender.com/users/${id}`)
       .then((res) => {
         if (!res.ok) throw new Error("Failed to fetch instructor data");
         return res.json();
@@ -49,7 +49,7 @@ function InstructorProfile() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    fetch(`https://coursify-backend-svup.onrender.com/users/${id}`, {
+    fetch(`https://coursify-backend-2yvl.onrender.com/users/${id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json"

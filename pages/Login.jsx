@@ -20,7 +20,7 @@ export default function Login() {
     }
 
     try {
-      const response = await fetch('https://coursify-backend-svup.onrender.com/login', {
+      const response = await fetch('https://coursify-backend-2yvl.onrender.com/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         credentials: 'include',

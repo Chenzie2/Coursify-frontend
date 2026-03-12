@@ -48,7 +48,7 @@ It connects seamlessly with a Flask backend for full-stack functionality.
 ## Folder Structure
 Coursify-frontend/
 ├── components/ # [CourseCard, Footer, Layout, Navbar]
-├── pages/ # [About, CourseDetails, Dashboard, Home, Instr, Instructor, LandingPage, Login, MyCourses, Register]
+├── pages/ # [About, CourseDetails, Dashboard, Home, Instr, Instructor, LandingPage, Login,  MyCourses, Register]
 ├── public/ # Coursify.webp
 ├── screenshots/ # [.jpg screenshots]
 ├── src/ # [App.*, main.jsx, assets/, images/, index.css]

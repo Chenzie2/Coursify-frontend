@@ -55,7 +55,7 @@ export default function Register() {
     }
 
     try {
-      const response = await fetch('https://coursify-backend-svup.onrender.com/signup', {
+      const response = await fetch('https://coursify-backend-2yvl.onrender.com/signup', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         credentials: 'include', 
